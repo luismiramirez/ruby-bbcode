@@ -59,6 +59,15 @@ module RubyBBCode
         :allow_tag_param => true, :allow_tag_param_between => true,
         :tag_param => /^((((http|https|ftp):\/\/)|\/).+)$/, :tag_param_tokens => [{ :token => :url }],
         :tag_param_description => 'The URL should start with http:// https://, ftp:// or /, instead of \'%param%\'' },
+      :nofollow => {
+        :html_open => '<a href="%url%" rel="nofollow">%between%', :html_close => '</a>',
+        :description => 'External link',
+        :example => '[nofollow]http://www.google.com[/nofollow].',
+        :only_allow => [],
+        :require_between => true,
+        :allow_tag_param => true, :allow_tag_param_between => true,
+        :tag_param => /^((((http|https|ftp):\/\/)|\/).+)$/, :tag_param_tokens => [{ :token => :url }],
+        :tag_param_description => 'The URL should start with http:// https://, ftp:// or /, instead of \'%param%\'' },
       :quote => {
         :html_open => '<div class="quote">%author%', :html_close => '</div>',
         :description => 'Quote another person',
@@ -89,7 +98,7 @@ module RubyBBCode
         :url_matches => [/youtube\.com.*[v]=([^&]*)/, /youtu\.be\/([^&]*)/, /y2u\.be\/([^&]*)/],
         :require_between => true},
       :vimeo => {
-        :html_open => '<iframe src="http://player.vimeo.com/video/%between%?badge=0" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>', 
+        :html_open => '<iframe src="http://player.vimeo.com/video/%between%?badge=0" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>',
         :html_close => '',
         :description => 'Vimeo video',
         :example => '[vimeo]http://vimeo.com/46141955[/vimeo]',
